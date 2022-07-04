@@ -6,6 +6,7 @@ import styled from 'styled-components';
 
 import Logo from './Logo';
 import ThemeSwitcher from './ThemeSwitcher';
+import NavCard from './NavCard';
 import voteImg from '../../images/voteImg.svg';
 import breedImg from '../../images/breedImg.svg';
 import galleryImg from '../../images/galleryImg.svg';
@@ -24,6 +25,34 @@ const LeftNav = ({ theme, setTheme }) => {
           <Logo theme={theme} />
           <ThemeSwitcher theme={theme} setTheme={setTheme} />
         </FlexDiv>
+        <h1>Hi Intern! ^_^</h1>
+        <p>Welcome to MI 2022 Front-end test</p>
+        <h3>Lets start using The DOG API</h3>
+        <Nav>
+          <NavCard
+            btnName="Voting"
+            imgSrc={voteImg}
+            url="/voting"
+            alt="voting"
+            path={path}
+          />
+          <NavCard
+            btnName="Breeds"
+            imgSrc={breedImg}
+            green
+            url="/breeds"
+            alt="breeds"
+            path={path}
+          />
+          <NavCard
+            btnName="Gallery"
+            imgSrc={galleryImg}
+            yellow
+            url="/gallery"
+            alt="gallery"
+            path={path}
+          />
+        </Nav>
       </BoxDiv>
     </Section>
   );
@@ -44,7 +73,8 @@ const BoxDiv = styled.div`
   }
   @media(max-width: 767px) {
     position: static;
-    margin 25px;
+    margin: 0;
+    padding:25px;
     width:auto;
   }
     h1 {
@@ -80,4 +110,20 @@ const FlexDiv = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+`;
+
+const Nav = styled.nav`
+  margin: 1.5rem 0rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  @media (max-width: 1024px) {
+    width: 85%;
+  }
+
+  @media (max-width: 767px) {
+    flex-direction: column;
+    width: 100%;
+  }
 `;

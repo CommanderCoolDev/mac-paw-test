@@ -28,13 +28,14 @@ export default App;
 const DocumentBody = styled.div`
   display: flex;
   flex-direction: row;
+  width: auto;
   height: auto;
 
   @media (max-width: 1024px) {
     flex-direction: column;
   }
 
-  @media (max-width: 768px) {
+  @media (max-width: 767px) {
     flex-direction: column;
   }
 `;
