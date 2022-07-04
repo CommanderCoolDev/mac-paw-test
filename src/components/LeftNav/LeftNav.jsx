@@ -10,6 +10,7 @@ import NavCard from './NavCard';
 import voteImg from '../../images/voteImg.svg';
 import breedImg from '../../images/breedImg.svg';
 import galleryImg from '../../images/galleryImg.svg';
+import Preloader from '../Preloader/Preloader';
 
 const LeftNav = ({ theme, setTheme }) => {
   const location = useLocation();
@@ -54,6 +55,7 @@ const LeftNav = ({ theme, setTheme }) => {
           />
         </Nav>
       </BoxDiv>
+      <Preloader />
     </Section>
   );
 };
