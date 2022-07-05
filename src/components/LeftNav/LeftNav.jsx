@@ -99,10 +99,11 @@ const Section = styled.section`
   min-height: 100vh;
   max-height: auto;
   width: 50%;
-  display: ${props => (props.path === '/' ? 'block' : 'none')};
+
   @media (max-width: 1024px) {
     width: auto;
     height: 100vh;
+
     display: ${props => (props.path === '/' ? 'block' : 'none')};
   }
 `;
