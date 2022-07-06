@@ -7,6 +7,7 @@ import BackBtn from '../../components/Vote/Back';
 import Preloader from '../../components/Preloader/Preloader';
 import Search from '../../components/Search/Search';
 import VoteButtons from '../../components/Vote/VoteButtons';
+import Log from '../../components/Vote/Log';
 
 const VoteView = () => {
   const { likeKey, disKey, logKey, activeKey } = useContext(PupContext);
@@ -68,6 +69,17 @@ const VoteView = () => {
             />
           </StyledVoteButtonsDiv>
         </FlexDiv>
+        <LogDiv>
+          {log.map((item, index) => (
+            <Log
+              key={index}
+              id={item.id}
+              content={item.content}
+              type={item.type}
+              time={item.time}
+            />
+          ))}
+        </LogDiv>
       </StyledBgBox>
     </StyledDiv>
   );
@@ -118,4 +130,8 @@ const StyledVoteButtonsDiv = styled.div`
     background: white;
     border-radius: 22px;
   }
+`;
+const LogDiv = styled.div`
+  margin: 10px 0px;
+  width: 100%;
 `;

@@ -80,17 +80,17 @@ const BoxDiv = styled.div`
     width:auto;
   }
     h1 {
-        color: ${props => props.theme.textPrim};
+        color: ${props => props.theme.textPrimary};
     margin-top: 5rem;
   }
 
   p {
-      color: ${props => props.theme.textSec};
+      color: ${props => props.theme.textSecondary};
     padding: 1.5rem 0rem;
   }
 
   h3 {
-      color: ${props => props.theme.textPrim};
+      color: ${props => props.theme.textPrimary};
     margin-top: 3.5rem;
   }
 `;

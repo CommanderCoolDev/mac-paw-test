@@ -16,4 +16,5 @@ const Section = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
+  margin: 80px 0;
 `;
