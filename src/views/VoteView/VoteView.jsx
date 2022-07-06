@@ -6,6 +6,7 @@ import HelperVote from '../../helpers/HelperVote';
 import BackBtn from '../../components/Vote/Back';
 import Preloader from '../../components/Preloader/Preloader';
 import Search from '../../components/Search/Search';
+import VoteButtons from '../../components/Vote/VoteButtons';
 
 const VoteView = () => {
   const { likeKey, disKey, logKey, activeKey } = useContext(PupContext);
@@ -33,7 +34,7 @@ const VoteView = () => {
       const resp = await axios('https://api.thedogapi.com/v1/images/search');
 
       setDog(resp.data[0]);
-      //   setActive(false);
+      setActive(false);
       setLoading(false);
     };
     fetch();
@@ -45,6 +46,28 @@ const VoteView = () => {
       <StyledBgBox>
         <BackBtn btnName="Voting" />
         {loading ? <Preloader /> : <StyledImg src={url} alt={dog.name} />}
+        <FlexDiv>
+          <StyledVoteButtonsDiv>
+            <VoteButtons
+              onClick={() => handleClick('like', dog)}
+              like
+              viewBox="0 0 30 30"
+              path="M0 15C0 6.71573 6.71573 0 15 0C23.2843 0 30 6.71573 30 15C30 23.2843 23.2843 30 15 30C6.71573 30 0 23.2843 0 15ZM15 2C7.8203 2 2 7.8203 2 15C2 22.1797 7.8203 28 15 28C22.1797 28 28 22.1797 28 15C28 7.8203 22.1797 2 15 2ZM10 12H8V10H10V12ZM22 12H20V10H22V12ZM9.2 16.6L9.8 17.4C12.4 20.8667 17.6 20.8667 20.2 17.4L20.8 16.6L22.4 17.8L21.8 18.6C18.4 23.1333 11.6 23.1333 8.2 18.6L7.6 17.8L9.2 16.6Z"
+            />
+            <VoteButtons
+              onClick={() => handleClick('fav', dog)}
+              fav
+              viewBox="0 0 30 26"
+              path={activePath}
+            />
+            <VoteButtons
+              onClick={() => handleClick('dis', dog)}
+              dis
+              viewBox="0 0 30 30"
+              path="M0 15C0 6.71573 6.71573 0 15 0C23.2843 0 30 6.71573 30 15C30 23.2843 23.2843 30 15 30C6.71573 30 0 23.2843 0 15ZM15 2C7.8203 2 2 7.8203 2 15C2 22.1797 7.8203 28 15 28C22.1797 28 28 22.1797 28 15C28 7.8203 22.1797 2 15 2ZM10 12H8V10H10V12ZM22 12H20V10H22V12ZM7.6 20.2L8.2 19.4C11.6 14.8667 18.4 14.8667 21.8 19.4L22.4 20.2L20.8 21.4L20.2 20.6C17.6 17.1333 12.4 17.1333 9.8 20.6L9.2 21.4L7.6 20.2Z"
+            />
+          </StyledVoteButtonsDiv>
+        </FlexDiv>
       </StyledBgBox>
     </StyledDiv>
   );
@@ -75,5 +98,24 @@ const StyledImg = styled.img`
   object-fit: cover;
   @media (max-width: 768px) {
     margin-top: 10px;
+  }
+`;
+const FlexDiv = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
+const StyledVoteButtonsDiv = styled.div`
+  margin-top: -48px;
+  padding: 4px;
+  background: ${props => props.theme.actionBtn};
+  border-radius: 22px;
+
+  div {
+    display: flex;
+    flex-direction: row;
+    background: white;
+    border-radius: 22px;
   }
 `;
