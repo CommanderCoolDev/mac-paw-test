@@ -1,6 +1,8 @@
 import { Suspense, useState } from 'react';
 
 import { Route, Routes } from 'react-router-dom';
+import { BreedProvider } from './Contexts/BreedContext';
+import { PupContext } from './Contexts/PupContext';
 import { ThemeProvider } from 'styled-components';
 
 import styled from 'styled-components';
@@ -10,6 +12,7 @@ import Hero from './views/HeroView/HeroView';
 import Search from './components/Search/Search';
 import Preloader from './components/Preloader/Preloader';
 import VoteView from './views/VoteView/VoteView';
+import BreedView from './views/BreedView/BreedView';
 
 function App() {
   const [theme, setTheme] = useState(lightTheme);
@@ -21,6 +24,14 @@ function App() {
           <Routes>
             <Route path="/" element={<Hero />} />
             <Route path="/voting" element={<VoteView />} />
+            <Route
+              path="/breeds"
+              element={
+                <BreedProvider>
+                  <BreedView />
+                </BreedProvider>
+              }
+            />
           </Routes>
         </DocumentBody>
       </ThemeProvider>
