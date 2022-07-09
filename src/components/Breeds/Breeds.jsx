@@ -7,6 +7,7 @@ import BackBtn from '../Vote/Back';
 import Search from '../Search/Search';
 import Select from '../../helpers/Select';
 import { BreedContext } from '../../Contexts/BreedContext';
+import BreedsSort from './BreedsSort';
 
 const Bredds = () => {
   const { byLimitCon, currentBreedCon, limitCon, dogsCon, orderCon } =
@@ -28,19 +29,73 @@ const Bredds = () => {
           breedId ? breedId : ''
         }`,
       );
+      // console.log(resp.data);
       setDogs(resp.data);
       setLoading(false);
     };
+    // console.log(limit);
     setTimeout(() => goFetch(), 2500); //for just in time
     // eslint-disable-next-line
   }, [limit, currentBreed, order]);
 
+  useEffect(() => {
+    if (dogs.length > 0) {
+      setLoading(true);
+      const temporary = [...dogs];
+      const result = [];
+      while (temporary.length > 0) {
+        result.push(temporary.splice(0, 10));
+      }
+
+      setBreedByLimit(result);
+      setLoading(false);
+    }
+    // eslint-disable-next-line
+  }, [dogs]);
+  // console.log(breedByLimit);
+
   return (
     <StyledDiv>
-      <StyledSpan>
-        <Search />
-        <BackBtn btnName="Breeds" />
-      </StyledSpan>
+      <Search />
+      <StyledBgBox>
+        <StyledSpan>
+          <BackBtn btnName="Breeds" />
+          <BreedsSort />
+        </StyledSpan>
+
+        {loading ? (
+          <Preloader />
+        ) : (
+          <Masonry>
+            {breedByLimit.map((tenDogs, index) => (
+              <Pattern key={index}>
+                {tenDogs
+                  .sort((a, b) =>
+                    a.width / a.height > b.width / b.height ? 1 : -1,
+                  )
+                  .map((dog, index) => (
+                    <GridItemWithName key={dog.id} index={index}>
+                      <Img src={dog.url} />
+
+                      {dog.breeds.length > 0 ? (
+                        <Label>
+                          <StyledLink
+                            to="/breeds/selected"
+                            onClick={() => handleSelectedClick(dog)}
+                          >
+                            {dog.breeds[0].name}
+                          </StyledLink>
+                        </Label>
+                      ) : (
+                        <Label>No name provided</Label>
+                      )}
+                    </GridItemWithName>
+                  ))}
+              </Pattern>
+            ))}
+          </Masonry>
+        )}
+      </StyledBgBox>
     </StyledDiv>
   );
 };
@@ -49,9 +104,9 @@ export default Bredds;
 //===========Styled===========//
 
 const StyledDiv = styled.div`
-  background: ${props => props.theme.bgBox};
-  border-radius: 20px;
-  width: 100%;
+  background: ${props => props.theme.bgMain};
+
+  width: 50%;
   height: 100%;
   padding: 20px;
 `;
@@ -270,4 +325,14 @@ const GridItemWithLike = styled.div`
   grid-area: ${props => props.index === 5 && 'eight'};
   grid-area: ${props => props.index === 8 && 'nine'};
   grid-area: ${props => props.index === 9 && 'ten'};
+`;
+const StyledLink = styled(Link)`
+  color: #ff868e;
+`;
+const StyledBgBox = styled.div`
+  background: ${props => props.theme.bgBox};
+  border-radius: 20px;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
 `;
