@@ -66,9 +66,9 @@ const Bredds = () => {
         {loading ? (
           <Preloader />
         ) : (
-          <Masonry>
+          <ItmesBox>
             {breedByLimit.map((tenDogs, index) => (
-              <Pattern key={index}>
+              <GridTemp key={index}>
                 {tenDogs
                   .sort((a, b) =>
                     a.width / a.height > b.width / b.height ? 1 : -1,
@@ -91,9 +91,9 @@ const Bredds = () => {
                       )}
                     </GridItemWithName>
                   ))}
-              </Pattern>
+              </GridTemp>
             ))}
-          </Masonry>
+          </ItmesBox>
         )}
       </StyledBgBox>
     </StyledDiv>
@@ -120,14 +120,14 @@ const StyledSpan = styled.span`
     flex-direction: column;
   }
 `;
-const Masonry = styled.div`
+const ItmesBox = styled.div`
   border-radius: 20px;
   width: 100%;
   height: auto;
   display: ${props => props.uploadOpen && 'none'};
 `;
 
-const Pattern = styled.div`
+const GridTemp = styled.div`
   padding: 0px 10px;
   margin-bottom: 20px;
 
@@ -262,70 +262,6 @@ const GridItemWithName = styled.div`
   grid-area: ${props => props.index === 9 && 'ten'};
 `;
 
-const GridItemWithLike = styled.div`
-  width: 100%;
-  height: 100%;
-  max-height: 100%;
-  max-height: ${props => props.index === 0 && '300px'};
-  max-height: ${props => props.index === 3 && '300px'};
-  max-height: ${props => props.index === 7 && '300px'};
-  max-height: ${props => props.index === 8 && '300px'};
-
-  color: white;
-  border-radius: 20px;
-  position: relative;
-  cursor: pointer;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
-  opacity: 1;
-  -webkit-transition: all 0.3s ease;
-  -moz-transition: all 0.3s ease;
-  -o-transition: all 0.3s ease;
-  transition: all 0.3s ease;
-
-  &:hover {
-    background-color: rgba(255, 134, 142, 0.6);
-  }
-
-  &:hover ${Label} {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 40px;
-    height: 40px;
-    z-index: 100;
-    padding: 10px 5px;
-    border-radius: 10px;
-
-    background-color: ${props => props.theme.bgBreed};
-    color: #ff868e;
-  }
-
-  &:hover ${Img} {
-    opacity: 0.3;
-  }
-
-  grid-area: ${props => props.index === 0 && 'one'};
-  grid-area: ${props => props.index === 2 && 'two'};
-  grid-area: ${props => props.index === 3 && 'three'};
-  grid-area: ${props => props.index === 1 && 'four'};
-  grid-area: ${props => props.index === 4 && 'five'};
-
-  grid-area: ${props => props.index === 6 && 'six'};
-  grid-area: ${props => props.index === 7 && 'seven'};
-  grid-area: ${props => props.index === 5 && 'eight'};
-  grid-area: ${props => props.index === 8 && 'nine'};
-  grid-area: ${props => props.index === 9 && 'ten'};
-`;
 const StyledLink = styled(Link)`
   color: #ff868e;
 `;

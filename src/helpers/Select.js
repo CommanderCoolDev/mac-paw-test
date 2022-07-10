@@ -8,7 +8,8 @@ const Select = () => {
 
   const handleSelectedClick = dog => {
     setSelected(dog);
-    console.log(selected); //just in case
+    // console.log('work'); //just in case
+    // console.log(selected); //just in case
   };
 
   return { handleSelectedClick };

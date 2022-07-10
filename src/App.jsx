@@ -13,6 +13,7 @@ import Search from './components/Search/Search';
 import Preloader from './components/Preloader/Preloader';
 import VoteView from './views/VoteView/VoteView';
 import BreedView from './views/BreedView/BreedView';
+import SelectedView from './views/SelectedView/SelectedView';
 
 function App() {
   const [theme, setTheme] = useState(lightTheme);
@@ -32,6 +33,7 @@ function App() {
                 </BreedProvider>
               }
             />
+            <Route path="/breeds/selected" element={<SelectedView />} />
           </Routes>
         </DocumentBody>
       </ThemeProvider>
