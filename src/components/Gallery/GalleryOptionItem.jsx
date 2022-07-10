@@ -111,7 +111,7 @@ const OptionHeader = styled.div`
   margin-left: 0px;
 
   background-color: ${props => props.theme.bgGaleryFilters};
-  color: ${props => props.theme.textPrim};
+  color: ${props => props.theme.textPrimary};
 
   padding: 0px 10px;
   border-radius: 10px;
@@ -155,7 +155,7 @@ const OptionList = styled.ul`
   min-width: 100%;
   min-width: ${props => props.xs && '200px'};
   background-color: ${props => props.theme.bgGaleryFilters};
-  color: ${props => props.theme.textSec};
+  color: ${props => props.theme.textSecondary};
 
   &:first-child {
     padding-top: 0.8em;
