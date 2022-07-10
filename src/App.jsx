@@ -4,6 +4,7 @@ import { Route, Routes } from 'react-router-dom';
 import { BreedProvider } from './Contexts/BreedContext';
 import { PupContext } from './Contexts/PupContext';
 import { ThemeProvider } from 'styled-components';
+import { GalleryProvider } from './Contexts/GalleryContext';
 
 import styled from 'styled-components';
 import LeftNav from './components/LeftNav/LeftNav';
@@ -14,6 +15,7 @@ import Preloader from './components/Preloader/Preloader';
 import VoteView from './views/VoteView/VoteView';
 import BreedView from './views/BreedView/BreedView';
 import SelectedView from './views/SelectedView/SelectedView';
+import Gallery from './components/Gallery/Gallery';
 
 function App() {
   const [theme, setTheme] = useState(lightTheme);
@@ -34,6 +36,14 @@ function App() {
               }
             />
             <Route path="/breeds/selected" element={<SelectedView />} />
+            <Route
+              path="/gallery"
+              element={
+                <GalleryProvider>
+                  <Gallery />
+                </GalleryProvider>
+              }
+            />
           </Routes>
         </DocumentBody>
       </ThemeProvider>
