@@ -92,7 +92,7 @@ const StyledDiv = styled.div`
   background: ${props => props.theme.bgMain};
 
   width: 50%;
-  height: 100%;
+  min-height: 100vh;
   padding: 20px;
 `;
 const StyledBgBox = styled.div`

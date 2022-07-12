@@ -16,6 +16,7 @@ import VoteView from './views/VoteView/VoteView';
 import BreedView from './views/BreedView/BreedView';
 import SelectedView from './views/SelectedView/SelectedView';
 import Gallery from './components/Gallery/Gallery';
+import DislikesView from './views/DFLViews/DislikesView';
 
 function App() {
   const [theme, setTheme] = useState(lightTheme);
@@ -44,6 +45,7 @@ function App() {
                 </GalleryProvider>
               }
             />
+            <Route path="/disliked" element={<DislikesView />} />
           </Routes>
         </DocumentBody>
       </ThemeProvider>

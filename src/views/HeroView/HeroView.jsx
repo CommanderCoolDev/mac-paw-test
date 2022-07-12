@@ -18,7 +18,7 @@ const Section = styled.section`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  min-height: 100vh;
   width: 50%;
   background: ${props => props.theme.bgMain};
   max-height: 100vh;
