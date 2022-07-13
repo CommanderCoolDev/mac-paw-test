@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.js": "/mac-paw-test/static/js/main.a191c29c.js",
+    "static/media/breedImg.svg": "/mac-paw-test/static/media/breedImg.11b3d89395d60dd8686fcd27153b82ad.svg",
+    "static/media/heroImg.png": "/mac-paw-test/static/media/heroImg.8a8ef0d2a5fab7f60f72.png",
+    "static/media/galleryImg.svg": "/mac-paw-test/static/media/galleryImg.7ec9fce6a8159816d7a5a21e9e533c67.svg",
+    "static/media/voteImg.svg": "/mac-paw-test/static/media/voteImg.b940862220fe950953bab50783d6b0cd.svg",
+    "static/media/logoLight.svg": "/mac-paw-test/static/media/logoLight.86f17df56b87119426b5f7568e0a3ca0.svg",
+    "static/media/logoDark.svg": "/mac-paw-test/static/media/logoDark.7eed3de49a07d4f8f73101c86b937d4e.svg",
+    "index.html": "/mac-paw-test/index.html",
+    "main.a191c29c.js.map": "/mac-paw-test/static/js/main.a191c29c.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.a191c29c.js"
+  ]
+}
