@@ -55,7 +55,6 @@ const LeftNav = ({ theme, setTheme }) => {
           />
         </Nav>
       </BoxDiv>
-      <Preloader />
     </Section>
   );
 };

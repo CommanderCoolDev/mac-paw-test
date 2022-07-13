@@ -190,6 +190,6 @@ const StyledBgBox = styled.div`
   background: ${props => props.theme.bgBox};
   border-radius: 20px;
   width: 100%;
-  height: 100%;
+  height: 100vh;
   padding: 20px;
 `;

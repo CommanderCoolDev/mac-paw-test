@@ -15,7 +15,7 @@ export const lightTheme = {
   actionBtn: '#FFFFFF',
   pinkBtn: '#FBE0DC',
   //==========Texts============//
-  textPrim: '#1D1D1D',
-  textSec: '#8C8C8C',
+  textPrimary: '#1D1D1D',
+  textSecondary: '#8C8C8C',
   beforePosition: '10%',
 };

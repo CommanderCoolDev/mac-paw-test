@@ -1,24 +1,55 @@
 import { useState, useContext } from 'react';
 import { PupContext } from '../../Contexts/PupContext';
 import styled from 'styled-components';
+import Preloader from '../../components/Preloader/Preloader';
+import { BounceLoader } from 'react-spinners';
 
 const GreetView = () => {
   const { greetKey } = useContext(PupContext);
   const [greet, setGreet] = greetKey;
-  const [start, setStart] = useState(true);
+  const [next, setNext] = useState(true);
   //   console.group(greet);
 
-  const handleClick = () => {
+  const handleClickNext = () => {
+    setNext(false);
+  };
+  const handleClickGreet = () => {
     setGreet(false);
   };
 
   return (
     <StyledDiv>
-      <StyledP>O_O</StyledP>
-      <StyledBtn onClick={handleClick}>IGNITE!!!</StyledBtn>
+      {next ? (
+        <>
+          <StyledP>O_O</StyledP>
+          <StyledBtn onClick={handleClickNext}>IGNITE!!!</StyledBtn>
+        </>
+      ) : (
+        <>
+          <StyledP>
+            One more second)It was interesting task!!! My face looks mostly like
+            this o_O al the way i do it))) Also here is Preloader, just dont
+            want you to miss it and used setTimeout mostly everywhere. Adaptive
+            design is in progress(i hope it will be done just in time) Also i
+            would like to share my little helper which was with me every day,
+            just click on it))) It takes almost 29 hours in summary to do this
+            funny staff))) Thank you for such interesting experience.
+          </StyledP>
+          <BounceLoader color="#97EAB9" />
+          <StyledBtn onClick={handleClickGreet}>LETS GO!!!!</StyledBtn>
+          <a
+            href="https://hostrider.com/index.html#0"
+            target="_blank"
+            rel="noreferrer"
+          >
+            <StyledBtn>HELPER=)</StyledBtn>
+          </a>
+        </>
+      )}
     </StyledDiv>
   );
 };
+
 export default GreetView;
 //===========Styled===========//
 const StyledDiv = styled.div`
@@ -45,6 +76,8 @@ const StyledBtn = styled.button`
   cursor: pointer;
   font-size: 30px;
   padding: 20px;
+  margin: 15px 0;
+
   &:hover,
   &:focus {
     background: #76c442;
@@ -73,4 +106,7 @@ const StyledBtn = styled.button`
     border-left: 6px black solid;
     border-right: 6px black solid;
   }
+`;
+const StyledPreloader = styled(Preloader)`
+  margin: 0;
 `;

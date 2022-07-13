@@ -5,6 +5,7 @@ import Select from '../../helpers/Select';
 import { PupContext } from '../../Contexts/PupContext';
 import BackBtn from '../../components/Vote/Back';
 import Preloader from '../../components/Preloader/Preloader';
+import Search from '../../components/Search/Search';
 
 const DislikesView = () => {
   const { disKey } = useContext(PupContext);
@@ -13,6 +14,14 @@ const DislikesView = () => {
   const [loading, setLoading] = useState();
   const { handleSelectedClick } = Select();
 
+  let noResult;
+  if (disliked.length < 1) {
+    noResult = (
+      <NoResult>
+        <p>No item found</p>
+      </NoResult>
+    ); //in case there is no disliked
+  }
   useEffect(() => {
     if (disliked.length > 0) {
       setLoading(true);
@@ -25,17 +34,9 @@ const DislikesView = () => {
       setByLimit(result);
     }
   }, [disliked]);
-
-  let noResult;
-  if (disliked.length < 1) {
-    noResult = (
-      <NoResult>
-        <p>No item found</p>
-      </NoResult>
-    ); //in case there is no disliked
-  }
   return (
     <StyledDiv>
+      <Search />
       <BackBtn btnName="Disliked" />
 
       {noResult}
@@ -45,26 +46,28 @@ const DislikesView = () => {
       ) : (
         <>
           {byLimit.map((tenDogs, index) => (
-            <GridTemp key={index}>
-              {tenDogs.map((dog, index) => (
-                <GridItemWithName key={dog.id} index={index}>
-                  <Img src={dog.url} />
-                  {dog.breeds.length > 0 ? (
-                    <StyledLabel>
-                      <StyledLink
-                        to="/breeds/selected"
-                        onClick={() => handleSelectedClick(dog)}
-                      >
-                        {' '}
-                        {dog.breeds[0].name}
-                      </StyledLink>
-                    </StyledLabel>
-                  ) : (
-                    <StyledLabel>No name provided</StyledLabel>
-                  )}
-                </GridItemWithName>
-              ))}
-            </GridTemp>
+            <StyledBgBox>
+              <GridTemp key={index}>
+                {tenDogs.map((dog, index) => (
+                  <GridItemWithName key={dog.id} index={index}>
+                    <Img src={dog.url} />
+                    {dog.breeds.length > 0 ? (
+                      <StyledLabel>
+                        <StyledLink
+                          to="/breeds/selected"
+                          onClick={() => handleSelectedClick(dog)}
+                        >
+                          {' '}
+                          {dog.breeds[0].name}
+                        </StyledLink>
+                      </StyledLabel>
+                    ) : (
+                      <StyledLabel>No name provided</StyledLabel>
+                    )}
+                  </GridItemWithName>
+                ))}
+              </GridTemp>
+            </StyledBgBox>
           ))}
         </>
       )}
@@ -91,6 +94,13 @@ const NoResult = styled.div`
     color: ${props => props.theme.textSecondary};
     padding: 0px 10px;
   }
+`;
+const StyledBgBox = styled.div`
+  background: ${props => props.theme.bgBox};
+  border-radius: 20px;
+  width: 100%;
+  height: 100vh;
+  padding: 20px;
 `;
 const StyledDiv = styled.div`
   background: ${props => props.theme.bgMain};

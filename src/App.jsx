@@ -18,6 +18,7 @@ import SelectedView from './views/SelectedView/SelectedView';
 import Gallery from './components/Gallery/Gallery';
 import DislikesView from './views/DFLViews/DislikesView';
 import GreetView from './views/GreetView/GreetView';
+import LikesView from './views/DFLViews/LikesView';
 
 function App() {
   const { greetKey } = useContext(PupContext);
@@ -55,7 +56,7 @@ function App() {
                   }
                 />
                 <Route path="/disliked" element={<DislikesView />} />
-                {/* <Route path="/greet" element={<GreetView />} /> */}
+                <Route path="/liked" element={<LikesView />} />
               </Routes>
             </DocumentBody>
           </ThemeProvider>
