@@ -37,6 +37,7 @@ const DislikesView = () => {
   return (
     <StyledDiv>
       <Search />
+      <StyledBgBox>
       <BackBtn btnName="Disliked" />
 
       {noResult}
@@ -46,7 +47,6 @@ const DislikesView = () => {
       ) : (
         <>
           {byLimit.map((tenDogs, index) => (
-            <StyledBgBox>
               <GridTemp key={index}>
                 {tenDogs.map((dog, index) => (
                   <GridItemWithName key={dog.id} index={index}>
@@ -67,10 +67,10 @@ const DislikesView = () => {
                   </GridItemWithName>
                 ))}
               </GridTemp>
-            </StyledBgBox>
           ))}
         </>
       )}
+      </StyledBgBox>
     </StyledDiv>
   );
 };

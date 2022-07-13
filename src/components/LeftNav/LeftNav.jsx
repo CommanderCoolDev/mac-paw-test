@@ -96,7 +96,7 @@ const BoxDiv = styled.div`
 const Section = styled.section`
   background: ${props => props.theme.bgMain};
   min-height: 100vh;
-  max-height: auto;
+
   width: 50%;
 
   @media (max-width: 1024px) {

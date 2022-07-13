@@ -65,8 +65,7 @@ const Log = ({ id, content, time, type }) => {
     <StyledDiv>
       <TimeSpan>{time}</TimeSpan>
       <p>
-        Image ID: <span>{id}</span>
-        {content}
+        Image ID: <span>{id}</span> {content}
       </p>
       <StyledSvg viewBox={viewBox}>{path}</StyledSvg>
     </StyledDiv>

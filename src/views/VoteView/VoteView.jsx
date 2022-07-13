@@ -8,6 +8,7 @@ import Preloader from '../../components/Preloader/Preloader';
 import Search from '../../components/Search/Search';
 import VoteButtons from '../../components/Vote/VoteButtons';
 import Log from '../../components/Vote/Log';
+import { API_URL } from '../../config';
 
 const VoteView = () => {
   const { likeKey, disKey, logKey, activeKey } = useContext(PupContext);
@@ -32,13 +33,14 @@ const VoteView = () => {
   useEffect(() => {
     const fetch = async () => {
       setLoading(true);
-      const resp = await axios('https://api.thedogapi.com/v1/images/search');
+      const resp = await axios(`${API_URL}search`);
 
       setDog(resp.data[0]);
       setActive(false);
       setLoading(false);
     };
     fetch();
+    // console.log(log);
     // eslint-disable-next-line
   }, [liked, disliked]);
   return (

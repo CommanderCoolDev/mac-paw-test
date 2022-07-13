@@ -9,6 +9,7 @@ import Search from '../Search/Search';
 import GallerySort from './GallerySort';
 import UploadModal from './UploadModal';
 import Preloader from '../Preloader/Preloader';
+import { API_URL } from '../../config';
 
 const Gallery = () => {
   const { favKey } = useContext(PupContext);
@@ -30,7 +31,7 @@ const Gallery = () => {
     setLoading(true);
     const fetchData = async () => {
       const resp = await axios(
-        `https://api.thedogapi.com/v1/images/search?limit=${limit}&order=${order}&mime_types=${type}&breed_id=${
+        `${API_URL}search?limit=${limit}&order=${order}&mime_types=${type}&breed_id=${
           breedID ? breedID : ''
         }`,
       );
@@ -42,13 +43,11 @@ const Gallery = () => {
   useEffect(() => {
     setLoading(true);
     const fetchData = async () => {
-      const resp = await axios(
-        'https://api.thedogapi.com/v1/images/search?limit=10',
-      );
+      const resp = await axios(`${API_URL}search?limit=10`);
       setDogs(resp.data);
       setLoading(false);
     };
-    setTimeout(() => fetchData(), 2500);
+    setTimeout(() => fetchData(), 1500);
     // eslint-disable-next-line
   }, []);
 

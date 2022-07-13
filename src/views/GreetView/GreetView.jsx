@@ -32,7 +32,7 @@ const GreetView = () => {
             want you to miss it and used setTimeout mostly everywhere. Adaptive
             design is in progress(i hope it will be done just in time) Also i
             would like to share my little helper which was with me every day,
-            just click on it))) It takes almost 29 hours in summary to do this
+            just click on it))) It takes almost 33 hours in summary to do this
             funny staff))) Thank you for such interesting experience.
           </StyledP>
           <BounceLoader color="#97EAB9" />
@@ -58,6 +58,7 @@ const StyledDiv = styled.div`
   align-items: center;
   flex-direction: column;
   height: 100vh;
+  background: linear-gradient(to bottom right, #4bbf79, #80b3e9);
 `;
 const StyledP = styled.p`
   font-size: 45px;

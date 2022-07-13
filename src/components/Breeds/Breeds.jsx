@@ -8,6 +8,7 @@ import Search from '../Search/Search';
 import Select from '../../helpers/Select';
 import { BreedContext } from '../../Contexts/BreedContext';
 import BreedsSort from './BreedsSort';
+import { API_URL } from '../../config';
 
 const Bredds = () => {
   const { byLimitCon, currentBreedCon, limitCon, dogsCon, orderCon } =
@@ -25,7 +26,7 @@ const Bredds = () => {
     setLoading(true);
     const goFetch = async () => {
       const resp = await axios(
-        `https://api.thedogapi.com/v1/images/search?limit=${limit}&order=${order}&has_breeds=true&size=med&breed_id=${
+        `${API_URL}search?limit=${limit}&order=${order}&has_breeds=true&size=med&breed_id=${
           breedId ? breedId : ''
         }`,
       );
@@ -34,7 +35,7 @@ const Bredds = () => {
       setLoading(false);
     };
     // console.log(limit);
-    setTimeout(() => goFetch(), 2500); //for just in time
+    setTimeout(() => goFetch(), 1500); //for just in time
     // eslint-disable-next-line
   }, [limit, currentBreed, order]);
 

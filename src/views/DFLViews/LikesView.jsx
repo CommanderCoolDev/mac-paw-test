@@ -38,35 +38,42 @@ const LikesView = () => {
   return (
     <StyledDiv>
       <Search />
-      <BackBtn btnName="Liked" />
-      {noResult}
-      {byLimit.map((tenDogs, index) => (
-        <StyledBgBox>
-          <GridTemp key={index}>
-            {tenDogs
-              .sort((a, b) =>
-                a.width / a.height > b.width / b.height ? 1 : -1,
-              )
-              .map((dog, index) => (
-                <GridItemWithName key={dog.id} index={index}>
-                  <Img src={dog.url} />
-                  {dog.breeds.length > 0 ? (
-                    <StyledLabel>
-                      <StyledLink
-                        to="/breeds/selected"
-                        onClick={() => handleSelectedClick(dog)}
-                      >
-                        {dog.breeds[0].name}
-                      </StyledLink>
-                    </StyledLabel>
-                  ) : (
-                    <StyledLabel>No name provided</StyledLabel>
-                  )}
-                </GridItemWithName>
-              ))}
-          </GridTemp>
-        </StyledBgBox>
-      ))}
+      <StyledBgBox>
+        <BackBtn btnName="Liked" />
+        {noResult}
+
+        {loading ? (
+          <Preloader />
+        ) : (
+          <>
+            {byLimit.map((tenDogs, index) => (
+              <GridTemp key={index}>
+                {tenDogs
+                  .sort((a, b) =>
+                    a.width / a.height > b.width / b.height ? 1 : -1,
+                  )
+                  .map((dog, index) => (
+                    <GridItemWithName key={dog.id} index={index}>
+                      <Img src={dog.url} />
+                      {dog.breeds.length > 0 ? (
+                        <StyledLabel>
+                          <StyledLink
+                            to="/breeds/selected"
+                            onClick={() => handleSelectedClick(dog)}
+                          >
+                            {dog.breeds[0].name}
+                          </StyledLink>
+                        </StyledLabel>
+                      ) : (
+                        <StyledLabel>No name provided</StyledLabel>
+                      )}
+                    </GridItemWithName>
+                  ))}
+              </GridTemp>
+            ))}
+          </>
+        )}
+      </StyledBgBox>
     </StyledDiv>
   );
 };

@@ -8,6 +8,9 @@ import axios from 'axios';
 import UploadResp from './UploadResp';
 import { useDropzone } from 'react-dropzone';
 import { lightTheme } from '../../themes/ligthTheme';
+import { API_URL } from '../../config';
+
+const API_KEY = process.env.REACT_APP_API_KEY;
 
 const UploadModal = ({ open, onClose }) => {
   const [files, setFiles] = useState([]);
@@ -40,7 +43,7 @@ const UploadModal = ({ open, onClose }) => {
     const config = {
       headers: {
         'Content-Type': 'multipart/form-data',
-        'x-api-key': '220e3104-105e-4131-96f6-194253068792',
+        'x-api-key': `${API_KEY}`,
       },
       onUploadProgress: progressEvent => {
         setUploadInProgress(true);
@@ -56,7 +59,7 @@ const UploadModal = ({ open, onClose }) => {
       fd.append('file', file);
     });
     axios
-      .post('https://api.thedogapi.com/v1/images/upload', fd, config)
+      .post(`${API_URL}upload`, fd, config)
       .then(response => {
         setResponseStatus(response.status);
         setHidden(false);
