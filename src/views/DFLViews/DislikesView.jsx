@@ -38,15 +38,15 @@ const DislikesView = () => {
     <StyledDiv>
       <Search />
       <StyledBgBox>
-      <BackBtn btnName="Disliked" />
+        <BackBtn btnName="Disliked" />
 
-      {noResult}
+        {noResult}
 
-      {loading ? (
-        <Preloader />
-      ) : (
-        <>
-          {byLimit.map((tenDogs, index) => (
+        {loading ? (
+          <Preloader />
+        ) : (
+          <>
+            {byLimit.map((tenDogs, index) => (
               <GridTemp key={index}>
                 {tenDogs.map((dog, index) => (
                   <GridItemWithName key={dog.id} index={index}>
@@ -67,9 +67,9 @@ const DislikesView = () => {
                   </GridItemWithName>
                 ))}
               </GridTemp>
-          ))}
-        </>
-      )}
+            ))}
+          </>
+        )}
       </StyledBgBox>
     </StyledDiv>
   );
