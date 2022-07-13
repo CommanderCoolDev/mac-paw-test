@@ -9,6 +9,7 @@ export const PupProvider = ({ children }) => {
   const [chunked, setChunked] = useState([]);
   const [log, setLog] = useState([]);
   const [active, setActive] = useState(false);
+  const [greet, setGreet] = useState(true);
 
   const [dogs, setDogs] = useState({});
   const [breeds, setBreeds] = useState({});
@@ -43,6 +44,7 @@ export const PupProvider = ({ children }) => {
         activeKey: [active, setActive],
         selectedKey: [selected, setSelected],
         searchReq: [searchValue, setSearchValue],
+        greetKey: [greet, setGreet],
       }}
     >
       {children}

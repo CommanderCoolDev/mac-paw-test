@@ -1,8 +1,8 @@
-import { Suspense, useState } from 'react';
+import { Suspense, useState, useContext } from 'react';
 
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, Navigate } from 'react-router-dom';
 import { BreedProvider } from './Contexts/BreedContext';
-import { PupContext } from './Contexts/PupContext';
+import { PupContext, PupProvider } from './Contexts/PupContext';
 import { ThemeProvider } from 'styled-components';
 import { GalleryProvider } from './Contexts/GalleryContext';
 
@@ -17,39 +17,51 @@ import BreedView from './views/BreedView/BreedView';
 import SelectedView from './views/SelectedView/SelectedView';
 import Gallery from './components/Gallery/Gallery';
 import DislikesView from './views/DFLViews/DislikesView';
+import GreetView from './views/GreetView/GreetView';
 
 function App() {
+  const { greetKey } = useContext(PupContext);
+  const [greet, setGreet] = greetKey;
   const [theme, setTheme] = useState(lightTheme);
+  // console.log(greet);
   return (
-    <Suspense fallback={<Preloader />}>
-      <ThemeProvider theme={theme}>
-        <DocumentBody>
-          <LeftNav theme={theme} setTheme={setTheme} />
-          <Routes>
-            <Route path="/" element={<Hero />} />
-            <Route path="/voting" element={<VoteView />} />
-            <Route
-              path="/breeds"
-              element={
-                <BreedProvider>
-                  <BreedView />
-                </BreedProvider>
-              }
-            />
-            <Route path="/breeds/selected" element={<SelectedView />} />
-            <Route
-              path="/gallery"
-              element={
-                <GalleryProvider>
-                  <Gallery />
-                </GalleryProvider>
-              }
-            />
-            <Route path="/disliked" element={<DislikesView />} />
-          </Routes>
-        </DocumentBody>
-      </ThemeProvider>
-    </Suspense>
+    <>
+      {greet ? (
+        <GreetView />
+      ) : (
+        <Suspense fallback={<Preloader />}>
+          <ThemeProvider theme={theme}>
+            <DocumentBody>
+              <LeftNav theme={theme} setTheme={setTheme} />
+              <Routes>
+                <Route path="/" element={<Hero />} />
+
+                <Route path="/voting" element={<VoteView />} />
+                <Route
+                  path="/breeds"
+                  element={
+                    <BreedProvider>
+                      <BreedView />
+                    </BreedProvider>
+                  }
+                />
+                <Route path="/breeds/selected" element={<SelectedView />} />
+                <Route
+                  path="/gallery"
+                  element={
+                    <GalleryProvider>
+                      <Gallery />
+                    </GalleryProvider>
+                  }
+                />
+                <Route path="/disliked" element={<DislikesView />} />
+                {/* <Route path="/greet" element={<GreetView />} /> */}
+              </Routes>
+            </DocumentBody>
+          </ThemeProvider>
+        </Suspense>
+      )}
+    </>
   );
 }
 
